@@ -2,14 +2,31 @@
 <mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://dozer.sourceforge.net schema/beanmapping.xsd">
 
-  <mapping>
+       <mapping>
     <class-a>com.lp.Entity.LookupDataEntity</class-a>
     <class-b>com.lp.Dto.LookupDataDto</class-b>
       <field>
-        <a date-format="MM/dd/yyyy HH:mm">dateCreated</a>
+        <a date-format="yyyy-dd-MM HH:mm:sss">dateCreated</a>
         <b>dateCreated</b>
       </field>
-  </mapping> 
+      <field-exclude>
+                <a>lookupItemData</a>
+                <b>lookupItemData</b>
+        </field-exclude>
+  </mapping>
+ 
+  <mapping>
+    <class-a>com.lp.Entity.LookupItemDataEntity</class-a>
+    <class-b>com.lp.Dto.LookupItemDataDto</class-b>
+      <field>
+        <a date-format="yyyy-dd-MM HH:mm:sss">dateCreated</a>
+        <b>dateCreated</b>
+      </field>
+        <field-exclude>
+                <a>lookupId</a>
+                <b>lookupId</b>
+        </field-exclude> 
+  </mapping>
             
                    
 </mappings>  

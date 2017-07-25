@@ -1,5 +1,7 @@
 package com.lp.Dto;
 
+import java.util.List;
+
 public class LookupDataDto {
 
 	private Long lookupId;
@@ -13,6 +15,8 @@ public class LookupDataDto {
 	private String ipValue;
 	
 	private String dateCreated;
+	
+	private List<LookupItemDataDto> lookupItemData;
 
 	public Long getLookupId() {
 		return lookupId;
@@ -60,6 +64,14 @@ public class LookupDataDto {
 
 	public void setDateCreated(String dateCreated) {
 		this.dateCreated = dateCreated;
+	}
+
+	public List<LookupItemDataDto> getLookupItemData() {
+		return lookupItemData;
+	}
+
+	public void setLookupItemData(List<LookupItemDataDto> lookupItemData) {
+		this.lookupItemData = lookupItemData;
 	}
 	
 }

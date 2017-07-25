@@ -1,5 +1,7 @@
 package com.lp.Configuration;
 
+import javax.servlet.Filter;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class E2EAppIntialiger extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -19,4 +21,10 @@ public class E2EAppIntialiger extends AbstractAnnotationConfigDispatcherServletI
         return new String[] { "/" };
     }
 
+    @Override
+    protected Filter[] getServletFilters() {
+    	Filter [] singleton = { new CORSFilter()};
+    	return singleton;
+    }
+ 
 }

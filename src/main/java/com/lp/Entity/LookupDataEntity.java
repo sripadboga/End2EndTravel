@@ -2,45 +2,50 @@ package com.lp.Entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
-@Table(name="lookup_data_table")
-public class LookupDataEntity implements Serializable{
+@Table(name = "lookup_data_table")
+public class LookupDataEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="my_seq", sequenceName="lookup_data_seq")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="my_seq")
-	@Column(name="lookup_id")
+	@SequenceGenerator(name = "my_seq", sequenceName = "lookup_data_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
+	@Column(name = "lookup_id")
 	private Long lookupId;
-	
-	@Column(name="lookup_name")
+
+	@Column(name = "lookup_name")
 	private String lookupName;
-	
-	@Column(name="active_flag")
+
+	@Column(name = "active_flag")
 	private Character activeFlag;
-	
-	@Column(name="created_user")
+
+	@Column(name = "created_user")
 	private String createdUser;
-	
-	@Column(name="ip_address")
+
+	@Column(name = "ip_address")
 	private String ipValue;
-	
-	@Column(name="date_created")
+
+	@Column(name = "date_created")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "lookupId")
+	private List<LookupItemDataEntity> lookupItemData;
 
 	/**
 	 * @return the activeFlag
@@ -50,7 +55,8 @@ public class LookupDataEntity implements Serializable{
 	}
 
 	/**
-	 * @param activeFlag the activeFlag to set
+	 * @param activeFlag
+	 *            the activeFlag to set
 	 */
 	public void setActiveFlag(Character activeFlag) {
 		this.activeFlag = activeFlag;
@@ -64,7 +70,8 @@ public class LookupDataEntity implements Serializable{
 	}
 
 	/**
-	 * @param createdUser the createdUser to set
+	 * @param createdUser
+	 *            the createdUser to set
 	 */
 	public void setCreatedUser(String createdUser) {
 		this.createdUser = createdUser;
@@ -78,7 +85,8 @@ public class LookupDataEntity implements Serializable{
 	}
 
 	/**
-	 * @param ipValue the ipValue to set
+	 * @param ipValue
+	 *            the ipValue to set
 	 */
 	public void setIpValue(String ipValue) {
 		this.ipValue = ipValue;
@@ -92,7 +100,8 @@ public class LookupDataEntity implements Serializable{
 	}
 
 	/**
-	 * @param dateCreated the dateCreated to set
+	 * @param dateCreated
+	 *            the dateCreated to set
 	 */
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
@@ -112,6 +121,14 @@ public class LookupDataEntity implements Serializable{
 
 	public void setLookupName(String lookupName) {
 		this.lookupName = lookupName;
+	}
+
+	public List<LookupItemDataEntity> getLookupItemData() {
+		return lookupItemData;
+	}
+
+	public void setLookupItemData(List<LookupItemDataEntity> lookupItemData) {
+		this.lookupItemData = lookupItemData;
 	}
 
 	@Override
@@ -174,7 +191,5 @@ public class LookupDataEntity implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }
